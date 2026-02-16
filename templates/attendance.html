@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8 text-center">
+        <div class="glass-card">
+            <h2 class="mb-4">Live Attendance Marking</h2>
+            <div class="position-relative overflow-hidden rounded-3 border border-secondary mb-3"
+                style="min-height: 480px; background: #000;">
+                <img src="{{ url_for('video_feed') }}" width="100%" class="img-fluid" alt="Camera Feed">
+
+                <div class="position-absolute bottom-0 start-0 w-100 p-2 bg-dark bg-opacity-75 text-white small">
+                    <i class="bi bi-camera-video-fill"></i> System Active | Face Camera directly
+                </div>
+            </div>
+
+            <p class="text-white-50">
+                The system will automatically recognize your face and mark your attendance.<br>
+                Please wait for the green box and your name to appear.
+            </p>
+
+            <div class="d-flex justify-content-center gap-3 mt-3">
+                <button onclick="startCamera()" class="btn btn-success"><i class="bi bi-camera-video"></i> Start
+                    Camera</button>
+                <button onclick="stopCamera()" class="btn btn-danger"><i class="bi bi-stop-circle"></i> Stop
+                    Camera</button>
+                <a href="{{ url_for('index') }}" class="btn btn-outline-light">Return Home</a>
+            </div>
+
+            <script>
+                function startCamera() {
+                    const img = document.querySelector('img[alt="Camera Feed"]');
+                    img.src = "{{ url_for('video_feed') }}";
+                }
+
+                function stopCamera() {
+                    const img = document.querySelector('img[alt="Camera Feed"]');
+                    img.src = ""; // Clears the source to stop the stream
+                }
+            </script>
+        </div>
+    </div>
+</div>
+{% endblock %}

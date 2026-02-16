@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="glass-card animate-up">
+            <h3 class="text-center mb-4">Student Registration</h3>
+            <div class="alert alert-warning small">
+                <i class="bi bi-info-circle"></i> Please upload a clear photo of your face for recognition.
+            </div>
+            <form method="POST" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label class="form-label">Register Number</label>
+                    <input type="text" name="reg_no" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Full Name</label>
+                    <input type="text" name="name" class="form-control" required>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Department</label>
+                        <input type="text" name="dept" class="form-control" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Year/Class</label>
+                        <input type="text" name="year" class="form-control" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Email</label>
+                        <input type="email" name="email" class="form-control" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Contact</label>
+                        <input type="tel" name="contact" class="form-control" required>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Photo Upload</label>
+                    <input type="file" name="photo" class="form-control" accept="image/*" required>
+                    <div class="form-text text-white-50">Upload a clear, front-facing jpg/png</div>
+                </div>
+
+                <div class="d-grid mt-4">
+                    <button type="submit" class="btn btn-primary">Register Student</button>
+                    <a href="{{ url_for('dashboard_staff') }}" class="btn btn-outline-light mt-2">Back to Dashboard</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
